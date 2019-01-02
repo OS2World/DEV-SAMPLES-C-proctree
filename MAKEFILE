@@ -1,0 +1,14 @@
+proctree.obj : proctree.c proctree.h
+	cl -AC -Oailnt -G2s -W3 -c proctree.c > proctree.err
+	type proctree.err
+
+p_print.obj : p_print.c proctree.h
+	cl -AC -Oailnt -G2s -W3 -c p_print.c > p_print.err
+	type p_print.err
+
+p_proc.obj : p_proc.c proctree.h
+	cl -AC -Oailnt -G2s -W3 -c p_proc.c > p_proc.err
+	type p_proc.err
+
+proctree.exe : proctree.obj p_print.obj p_proc.obj
+	link proctree p_print p_proc,proctree,,/NOD:clibce clibcep doscalls,proctree
